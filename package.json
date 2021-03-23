@@ -1,0 +1,24 @@
+{
+  "name": "city-explorer-api",
+  "version": "1.0.0",
+  "description": "Back end for city-explorer",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JessiVelazquez/city-explorer-API.git"
+  },
+  "author": "Jessi Velazquez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JessiVelazquez/city-explorer-API/issues"
+  },
+  "homepage": "https://github.com/JessiVelazquez/city-explorer-API#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
