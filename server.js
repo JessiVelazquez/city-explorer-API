@@ -31,6 +31,7 @@ app.get('/', function (request, response) {
 
 app.get('/weather', forecastData);
 
+
 function forecastData(request, response) {
   const city = weather.city_name;
   const lat = weather.lat;
