@@ -14,13 +14,14 @@ A server back end for city-explorer
 
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
-![Data Flow Chart](arch.png)
+![Data Flow Chart](arch2.png)
 
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
 
 01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
-03-23-2021 8:40pm - Server is running andis serving data to city-explorer front end
+03-23-2021 8:40pm - Server is running and is serving static data to city-explorer front end
+03-24-2021 11:24pm - Server is running locally and serving weather API data to front end upon request. Server is deploed to heroku but there is an issue with it not sending API data to front end. Currently for the app to work, nodemon must be run locally.
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
@@ -36,3 +37,17 @@ Start time: 1:00pm
 Finish time: 8:45pm
 
 Actual time needed to complete: 7.75 hours
+
+
+
+
+
+Name of feature: Weather API 
+
+Estimate of time needed to complete: 5 hours
+
+Start time: 1:00pm
+
+Finish time: 7:30pm
+
+Actual time needed to complete: 6.5 hours
