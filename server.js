@@ -34,8 +34,6 @@ app.get('/weather', forecastData);
 function forecastData(request, response) {
   console.log(request.query);
   const city = request.query.city_name;
-  // const lat = request.query.lat;
-  // const lon = request.query.lon;
   const url = 'http://api.weatherbit.io/v2.0/forecast/daily';
   const query = {
     city: city,
@@ -52,6 +50,9 @@ function forecastData(request, response) {
       });
       console.log(weatherArray);
       response.status(200).send(weatherArray);
+    })
+    .catch(err => {
+      response.status(500).send(err.message)
     });
 
 
