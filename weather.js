@@ -30,9 +30,16 @@ function forecastData(request, response) {
 }
 
 function Forecast(obj) {
-  this.description = `High temp: ${obj.high_temp} | Low Temp: ${obj.low_temp} | Conditions: ${obj.weather.description}`;
+  this.highTemp = `High Temp: ${obj.high_temp}`;
+  this.lowTemp = `Low Temp: ${obj.low_temp}`;
+  this.description = `Conditions: ${obj.weather.description}`;
   this.date = obj.datetime;
 }
+
+// function Forecast(obj) {
+//   this.description = `High temp: ${obj.high_temp} | Low Temp: ${obj.low_temp} | Conditions: ${obj.weather.description}`;
+//   this.date = obj.datetime;
+// }
 
 //Exports
 module.exports = forecastData;
