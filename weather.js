@@ -29,6 +29,7 @@ function forecastData(request, response) {
     });
 }
 
+//Object constructor for front end
 function Forecast(obj) {
   this.highTemp = `High Temp: ${obj.high_temp}`;
   this.lowTemp = `Low Temp: ${obj.low_temp}`;
@@ -36,10 +37,6 @@ function Forecast(obj) {
   this.date = obj.datetime;
 }
 
-// function Forecast(obj) {
-//   this.description = `High temp: ${obj.high_temp} | Low Temp: ${obj.low_temp} | Conditions: ${obj.weather.description}`;
-//   this.date = obj.datetime;
-// }
 
 //Exports
 module.exports = forecastData;
