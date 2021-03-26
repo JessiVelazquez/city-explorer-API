@@ -3,7 +3,7 @@
 # Project Name
 
 **Author**: Jessi Velazquez
-**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+**Version**: 1.3.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
 <!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
@@ -22,6 +22,7 @@ A server back end for city-explorer
 01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
 03-23-2021 8:40pm - Server is running and is serving static data to city-explorer front end
 03-24-2021 11:24pm - Server is running locally and serving weather API data to front end upon request. Server is deploed to heroku but there is an issue with it not sending API data to front end. Currently for the app to work, nodemon must be run locally.
+03-25-2021 11:24pm - Server code has been refactored into function module file and main server.js file. Server is still running locally and serving weather API data to front end upon request. Server is deployed to heroku but there remains to be an issue with it not sending API data to front end. Currently for the app to work, nodemon must be run locally.
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
@@ -51,3 +52,15 @@ Start time: 1:00pm
 Finish time: 7:30pm
 
 Actual time needed to complete: 6.5 hours
+
+
+
+Name of feature: Refactor and Nested component
+
+Estimate of time needed to complete: 3 hours
+
+Start time: 5:30pm
+
+Finish time: 7:45pm
+
+Actual time needed to complete: 2.25 hours
