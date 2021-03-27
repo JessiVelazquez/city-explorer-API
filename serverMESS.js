@@ -6,7 +6,7 @@ const app = express();
 const cors = require('cors');
 const PORT = process.env.PORT || 3002;
 
-const weather = require(`./weatherSUCK`);
+const weather = require(`./weatherMESS`);
 // const movies = require(`./movies`);
 
 app.use(cors());
@@ -16,7 +16,7 @@ app.get('/', function (request, response) {
 });
 
 app.get('/weather', weatherHandler);
-// app.get('/weather', moviesHandler)
+
 
 
 function weatherHandler(request, response) {
