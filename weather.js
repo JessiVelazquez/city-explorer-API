@@ -1,39 +1,85 @@
 'use strict';
 
-//Libraries
+let cache = require('./cache.js');
+
 const superagent = require('superagent');
 
-//Functions
-function forecastData(request, response) {
-  const city = request.query.city_name;
+// function getWeather(request, response) {
+//   const city = request.query.city_name;
+//   const url = 'http://api.weatherbit.io/v2.0/forecast/daily';
+//   const query = {
+//     city: city,
+//     key: process.env.WEATHER_API_KEY,
+//   };
+
+// function getWeather(request, response) {
+//   console.log('getWeather');
+//   const city = request.query.city_name;
+//   const key = `weather-${lat}-${lon}`;
+//   const url = 'http://api.weatherbit.io/v2.0/forecast/daily';
+//   const query = {
+//     city: city,
+//     lat: lat,
+//     lon: lon,
+//     key: process.env.WEATHER_API_KEY,
+//   };
+
+function getWeather(lat, lon) {
+  console.log('latlon', lat, lon);
+  const key = `weather-${lat}-${lon}`;
   const url = 'http://api.weatherbit.io/v2.0/forecast/daily';
   const query = {
-    city: city,
     key: process.env.WEATHER_API_KEY,
+    lat: lat,
+    lon: lon
   };
 
-  superagent
-    .get(url)
-    .query(query)
-    .then(superagentResults => {
-      const weatherArray = superagentResults.body.data.map(agent => {
-        return new Forecast(agent);
-      });
-      response.status(200).send(weatherArray);
-    })
-    .catch(err => {
-      response.status(500).send(err.message)
+  if (cache[key] && (Date.now() - cache[key].timestamp < 300000)) {
+    console.log('Cache hit', cache[key].data);
+  } else {
+    console.log('Cache miss');
+    cache[key] = {};
+    cache[key].timestamp = Date.now();
+
+
+    cache[key].data = superagent.get(url)
+      .query(query)
+      .then(response => parseWeather(response.body));
+  }
+  return cache[key].data;
+}
+
+
+
+function weatherHandler(request, response) {
+  const { lat, lon } = request.query;
+  console.log('lat', lat);
+  getWeather(lat, lon)
+    .then(summaries => response.send(summaries))
+    .catch((error) => {
+      console.error(error);
+      response.status(500).send('Sorry. Something went wrong!');
     });
 }
 
-//Object constructor for front end
-function Forecast(obj) {
-  this.highTemp = `High Temp: ${obj.high_temp}`;
-  this.lowTemp = `Low Temp: ${obj.low_temp}`;
-  this.description = `Conditions: ${obj.weather.description}`;
-  this.date = obj.datetime;
+function parseWeather(weatherData) {
+  try {
+    const weatherArray = weatherData.data.map(day => {
+      return new Forecast(day);
+    });
+    return Promise.resolve(weatherArray);
+  } catch (e) {
+    return Promise.reject(e);
+  }
 }
 
+class Forecast {
+  constructor(obj) {
+    this.highTemp = `High Temp: ${obj.high_temp}`;
+    this.lowTemp = `Low Temp: ${obj.low_temp}`;
+    this.description = `Conditions: ${obj.weather.description}`;
+    this.date = obj.datetime;
+  }
+}
 
-//Exports
-module.exports = forecastData;
+module.exports = weatherHandler;
