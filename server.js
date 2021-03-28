@@ -7,7 +7,7 @@ const cors = require('cors');
 const PORT = process.env.PORT || 3002;
 
 const weatherHandler = require(`./weather`);
-const movies = require(`./movies`);
+const getMovies = require(`./movies`);
 
 app.use(cors());
 
@@ -16,7 +16,7 @@ app.get('/', function (request, response) {
 });
 
 app.get('/weather', weatherHandler);
-app.get('/movies', movies);
+app.get('/movies', getMovies);
 
 
 
